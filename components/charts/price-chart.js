@@ -76,12 +76,19 @@ function useTokenPrice(timeframe) {
 		`https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=90`,
 		fetcher
 	);
-	const ETHPrices = ETHData ? ETHData.prices.map((item) => item[1]) : [];
-	const ETHTimestamps = ETHData
-		? ETHData.prices.map((item) =>
-				moment(item[0]).format("MMMM D, YYYY h:mm a")
-		  )
+
+	const ETHDataFilteredTimestamp = ETHData
+		? timeframe !== "3months"
+			? ETHData.prices.slice(
+					ETHData.prices.length - ETHRISEPrices.length + 1,
+					ETHData.prices.length
+			  )
+			: ETHData.prices
 		: [];
+	const ETHPrices = ETHDataFilteredTimestamp.map((item) => item[1]);
+	const ETHTimestamps = ETHDataFilteredTimestamp.map((item) =>
+		moment(item[0]).format("MMMM D, YYYY h:mm a")
+	);
 
 	const error = ETHError && ETHRISEError;
 	return {
