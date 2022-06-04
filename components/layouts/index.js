@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Layout(props) {
 	return (
-		<div className="bg-stone-900 flex justify-center h-full text-white">
-			<div className="w-3/4">
+		<div className="flex justify-center h-full text-white">
+			<div className="w-3/4 h-full">
 				<nav className="flex items-center justify-between py-4">
 					<div className="flex items-center">
 						<Logo />
@@ -28,7 +28,7 @@ export default function Layout(props) {
 						</Link>
 					</div>
 				</nav>
-				<div className="mt-4">{props.children}</div>
+				<div className="mt-4 h-full">{props.children}</div>
 			</div>
 		</div>
 	);

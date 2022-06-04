@@ -6,8 +6,8 @@ export default function Price() {
 	const [timeframe, setTimeframe] = useState("daily");
 	return (
 		<Layout>
-			<div className="flex">
-				<div className="w-3/4 pr-8">
+			<div className="flex h-full">
+				<div className="w-3/4 pr-8 my-8" style={{height: 1024}}>
 					<PriceChart timeframe={timeframe} />
 				</div>
 				<div className="w-1/4">
