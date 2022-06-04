@@ -50,13 +50,13 @@ export default async function handler(req, res) {
 			16
 		);
 	}
-	const realResult = result.reverse().map((item) => {
+	const realResult = result.map((item) => {
 		const transactionHash = item.transactionHash;
-		const timeStamp = parseInt(item.timeStamp, 16);
+		const timestamp = parseInt(item.timeStamp, 16);
 		const minter = paddedToChecksumAddress(item.topics[1]);
 		const mintAmount = parseInt(hexToBigInt(item.data)) / 10 ** 18;
 
-		return { transactionHash, timeStamp, mintAmount, minter };
+		return { transactionHash, timestamp, mintAmount, minter };
 	});
 	res.status(200).json(realResult);
 }
