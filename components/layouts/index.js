@@ -6,14 +6,17 @@ export default function Layout(props) {
 		<div className="flex justify-center h-full text-white">
 			<div className="w-3/4 h-full">
 				<nav className="flex items-center justify-between py-4">
-					<div className="flex items-center">
-						<Logo />
-						<h1 className="text-2xl p-2 ml-2">Risedle Analytics</h1>
-					</div>
+					<Link href="/">
+						<a>
+							<div className="flex items-center">
+								<Logo />
+								<h1 className="text-2xl p-2 ml-2">
+									Risedle Analytics
+								</h1>
+							</div>
+						</a>
+					</Link>
 					<div className="flex items-center flex-column">
-						<Link href="/">
-							<a className="ml-4">Home</a>
-						</Link>
 						<Link href="/prices">
 							<a className="ml-4">Prices</a>
 						</Link>
