@@ -4,20 +4,18 @@ import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	PointElement,
-	LineElement,
+	BarElement,
 	Title,
 	Tooltip,
 	Legend,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import moment from "moment";
 import { useEffect } from "react";
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
-	PointElement,
-	LineElement,
+	BarElement,
 	Title,
 	Tooltip,
 	Legend
@@ -63,39 +61,82 @@ function useMintVolume() {
 		`/api/minter`,
 		fetcher
 	);
-	const minterAmounts = minterData
-		? minterData.map((item) => item.mintAmount)
-		: [];
-	const minterTimestamps = minterData
-		? minterData.map((item) =>
-				moment.unix(item.timestamp).format("MMMM D, YYYY h:mm a")
-		  )
-		: [];
+	const mintAmountGroupByDate = {};
+	minterData?.forEach((item) => {
+		const day = moment.unix(item.timestamp).format("YYYY-MM-DD");
+		const addedAmount = item.mintAmount;
+		if (!mintAmountGroupByDate[day]) mintAmountGroupByDate[day] = 0;
+		mintAmountGroupByDate[day] += addedAmount;
+	});
+	const mintedVolume = Object.values(mintAmountGroupByDate);
+	const minterTimestamps = Object.keys(mintAmountGroupByDate).map((item) =>
+		moment(item).format("MMMM D, YYYY")
+	);
 
 	return {
-		minterAmounts,
+		mintedVolume,
 		minterTimestamps,
 		minterError,
+		minterData,
 	};
 }
 
-export default function MintChart({ timeframe }) {
-	const { minterAmounts, minterTimestamps, minterError } = useMintVolume();
+function shortenHash(hash) {
+	const show = 5;
 	return (
-		<Line
+		hash.slice(0, show) +
+		"..." +
+		hash.slice(hash.length - show + 1, hash.length)
+	);
+}
+
+export default function MintChart({ view }) {
+	const { mintedVolume, minterTimestamps, minterData, minterError } =
+		useMintVolume();
+	return view === "volume" ? (
+		<Bar
 			options={chartOption}
 			data={{
 				labels: minterTimestamps,
 				datasets: [
 					{
-						label: "Minter Amounts",
-						data: minterAmounts,
-						backgroundColor: ["purple"],
-						borderColor: ["purple"],
+						label: "Minted Volume",
+						data: mintedVolume,
+						backgroundColor: ["teal"],
+						borderColor: ["teal"],
 						borderWidth: 2,
 					},
 				],
 			}}
 		/>
+	) : (
+		<table className="w-full border-collapse border border-slate-500">
+			<tr>
+				<th className="border border-slate-600">txHash</th>
+				<th className="border border-slate-600">minter</th>
+				<th className="border border-slate-600">wen?</th>
+				<th className="border border-slate-600">amount</th>
+			</tr>
+			{minterData
+				?.map((item, idx) => minterData[minterData.length - 1 - idx])
+				?.map((item) => (
+					<tr key={item.transactionHash}>
+						<td className="border border-slate-700">
+							{shortenHash(item.transactionHash)}
+						</td>
+						<td className="border border-slate-700">
+							{shortenHash(item.minter)}
+						</td>
+						<td className="border border-slate-700">
+							{moment
+								.unix(item.timestamp)
+								.format("MMM D, YYYY hh:mm:s a")}
+						</td>
+						<td className="border border-slate-700">
+							{item.mintAmount.toFixed(4)} ETHRISE
+						</td>
+					</tr>
+				))}
+		</table>
 	);
 }

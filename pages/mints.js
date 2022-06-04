@@ -1,36 +1,30 @@
 import MintChart from "../components/charts/mint-chart";
 import Layout from "../components/layouts";
+import { useState } from "react";
 
 export default function Mints() {
+	const [view, setView] = useState("volume");
 	return (
 		<Layout>
 			<div className="flex h-full">
 				<div className="w-3/4 pr-8 my-8" style={{ height: 1024 }}>
-					<MintChart />
+					<MintChart view={view} />
 				</div>
-				{/* <div className="w-1/4">
-					<h2 className="text-2xl mb-4">Filter</h2>
+				<div className="w-1/4">
+					<h2 className="text-2xl mb-4">Switch View</h2>
 					<form>
 						<div className="mb-2">
 							<select
 								className="bg-stone-700 w-full py-2"
-								value={timeframe}
-								onChange={(e) => setTimeframe(e.target.value)}
+								value={view}
+								onChange={(e) => setView(e.target.value)}
 							>
-								<option value="daily">1 Day</option>
-								<option value="weekly">1 Week</option>
-								<option value="monthly">1 Month</option>
-								<option value="3months">3 Months</option>
+								<option value="volume">Mint Volume</option>
+								<option value="address">Minter Address</option>
 							</select>
 						</div>
-						<div>
-							<input type="checkbox" /> ETH
-						</div>
-						<div>
-							<input type="checkbox" /> ETHRISE
-						</div>
 					</form>
-				</div> */}
+				</div>
 			</div>
 		</Layout>
 	);
