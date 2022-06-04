@@ -24,17 +24,17 @@ ChartJS.register(
 const fetcher = (...args) => axios(...args).then((res) => res.data);
 
 export default function PriceChart({ timeframe }) {
-	const { data, error } = useSWR(
+	const { data: ETHRISEData, error } = useSWR(
 		`https://snapshot-arbitrum.risedle.com/v1/leveragedTokens/${timeframe}/0x46D06cf8052eA6FdbF71736AF33eD23686eA1452`,
 		fetcher
 	);
-
-	const navs = data ? data.map((item) => item.nav) : []; //.filter((item, i) => i <= 10);
-	const timestamps = data
-		? data.map((item) =>
+	const ETHRISEPrices = ETHRISEData ? ETHRISEData.map((item) => item.nav) : []; //.filter((item, i) => i <= 10);
+	const ETHRISETimestamps = ETHRISEData
+		? ETHRISEData.map((item) =>
 				moment(item.timestamp).format("MMMM D, YYYY h:mm a")
 		  )
 		: []; //.filter((item, i) => i <= 10);
+		
 	return (
 		<Line
 			options={{
@@ -71,11 +71,11 @@ export default function PriceChart({ timeframe }) {
 				},
 			}}
 			data={{
-				labels: timestamps,
+				labels: ETHRISETimestamps,
 				datasets: [
 					{
 						label: "ETHRISE's Price",
-						data: navs,
+						data: ETHRISEPrices,
 						backgroundColor: ["teal"],
 						borderColor: ["teal"],
 						borderWidth: 2,

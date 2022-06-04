@@ -7,7 +7,7 @@ export default function Price() {
 	return (
 		<Layout>
 			<div className="flex">
-				<div className="w-3/4">
+				<div className="w-3/4 pr-8">
 					<PriceChart timeframe={timeframe} />
 				</div>
 				<div className="w-1/4">

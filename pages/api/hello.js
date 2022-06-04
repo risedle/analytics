@@ -4,6 +4,7 @@ const CoinGeckoClient = new CoinGecko();
 
 export default async function handler(req, res) {
 	// let { data } = await CoinGeckoClient.ping();
+  // https://api.coingecko.com/api/v3/ping
 	const { data } = await CoinGeckoClient.coins.fetchMarketChart(
 		"eth-2x-flexible-leverage-index",
 		{ days: "max" }
