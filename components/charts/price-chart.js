@@ -23,16 +23,18 @@ ChartJS.register(
 );
 const fetcher = (...args) => axios(...args).then((res) => res.data);
 
-
-
-export default function PriceChart(props) {
+export default function PriceChart({ timeframe }) {
 	const { data, error } = useSWR(
-		"https://snapshot-arbitrum.risedle.com/v1/leveragedTokens/3months/0x46D06cf8052eA6FdbF71736AF33eD23686eA1452",
+		`https://snapshot-arbitrum.risedle.com/v1/leveragedTokens/${timeframe}/0x46D06cf8052eA6FdbF71736AF33eD23686eA1452`,
 		fetcher
 	);
 
 	const navs = data ? data.map((item) => item.nav) : []; //.filter((item, i) => i <= 10);
-	const timestamps = data ? data.map((item) => moment(item.timestamp).format('MMMM D, YYYY h:mm a')) : []; //.filter((item, i) => i <= 10);
+	const timestamps = data
+		? data.map((item) =>
+				moment(item.timestamp).format("MMMM D, YYYY h:mm a")
+		  )
+		: []; //.filter((item, i) => i <= 10);
 	return (
 		<Line
 			options={{
