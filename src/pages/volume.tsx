@@ -1,9 +1,3 @@
-import Layout from "../components/layouts";
+import { UnderConstructionPage } from "src/modules/under-construction/UnderConstructionPage";
 
-export default function Volume() {
-	return (
-		<Layout>
-			<p>coming soon 🚀</p>
-		</Layout>
-	);
-}
+export default UnderConstructionPage;
