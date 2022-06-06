@@ -34,7 +34,7 @@ const chartOption = {
 		tooltip: {
 			enabled: true,
 			intersect: false,
-			custom: function (tooltipModel) {
+			custom: function (tooltipModel: any) {
 				tooltipModel.opacity = 0;
 			},
 		},
@@ -56,7 +56,7 @@ const chartOption = {
 	},
 };
 
-const fetcher = (...args) => axios(...args).then((res) => res.data);
+const fetcher = (...args: any) => axios(...args).then((res) => res.data);
 
 function useTokenPrice(timeframe) {
 	const { data: ETHRISEData, ETHRISEError } = useSWR(

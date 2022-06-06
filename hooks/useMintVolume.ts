@@ -1,8 +1,6 @@
-import useSWR from "swr";
 import moment from "moment";
 import axios from "axios";
 import { useState, useEffect } from "react";
-const fetcher = (...args) => axios(...args).then((res) => res.data);
 
 function hexToBigInt(s) {
 	function add(x, y) {

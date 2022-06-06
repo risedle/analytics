@@ -1,4 +1,3 @@
-import PriceChart from "../components/charts/price-chart";
 import Layout from "../components/layouts";
 
 export default function Home() {
