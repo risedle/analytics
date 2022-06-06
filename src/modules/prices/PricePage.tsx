@@ -1,8 +1,9 @@
-import PriceChart from "../components/charts/price-chart";
-import Layout from "../components/layouts";
+import PriceChart from "src/components/charts/price-chart";
+import Layout from "src/components/layouts";
 import { useState } from "react";
+import { NextPage } from "next";
 
-export default function Price() {
+export const PricePage: NextPage = () => {
 	const [timeframe, setTimeframe] = useState("daily");
 	return (
 		<Layout>

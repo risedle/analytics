@@ -1,13 +1,18 @@
-import Layout from "../components/layouts";
+import { NextPage } from "next";
+import Layout from "src/components/layouts";
 
-export default function Home() {
+export const HomePage: NextPage = () => {
 	return (
 		<Layout>
 			<p>gm!</p>
 
 			<div className="mt-8">
 				Please create dune dashboard similar to
-				<a href="https://dune.com/jdcook/ETH2x-FLI" target="_blank" rel="noreferrer">
+				<a
+					href="https://dune.com/jdcook/ETH2x-FLI"
+					target="_blank"
+					rel="noreferrer"
+				>
 					{" "}
 					https://dune.com/jdcook/ETH2x-FLI
 				</a>
@@ -20,4 +25,4 @@ export default function Home() {
 			<div>✦ to be added later</div>
 		</Layout>
 	);
-}
+};

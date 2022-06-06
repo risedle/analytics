@@ -1,8 +1,9 @@
-import MintChart from "../components/charts/mint-chart";
-import Layout from "../components/layouts";
+import MintChart from "src/components/charts/mint-chart";
+import Layout from "src/components/layouts";
 import { useState } from "react";
+import { NextPage } from "next";
 
-export default function Mints() {
+export const MintPage: NextPage = () => {
 	const [view, setView] = useState("volume");
 	return (
 		<Layout>
