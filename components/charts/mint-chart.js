@@ -1,5 +1,3 @@
-import useSWR from "swr";
-import axios from "axios";
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -9,9 +7,10 @@ import {
 	Tooltip,
 	Legend,
 } from "chart.js";
-import { Line, Bar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import moment from "moment";
-import { useEffect } from "react";
+import { useMintVolume } from "../../hooks/useMintVolume";
+
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -54,33 +53,6 @@ const chartOption = {
 	},
 };
 
-const fetcher = (...args) => axios(...args).then((res) => res.data);
-
-function useMintVolume() {
-	const { data: minterData, error: minterError } = useSWR(
-		`/api/minter`,
-		fetcher
-	);
-	const mintAmountGroupByDate = {};
-	minterData?.forEach((item) => {
-		const day = moment.unix(item.timestamp).format("YYYY-MM-DD");
-		const addedAmount = item.mintAmount;
-		if (!mintAmountGroupByDate[day]) mintAmountGroupByDate[day] = 0;
-		mintAmountGroupByDate[day] += addedAmount;
-	});
-	const mintedVolume = Object.values(mintAmountGroupByDate);
-	const minterTimestamps = Object.keys(mintAmountGroupByDate).map((item) =>
-		moment(item).format("MMMM D, YYYY")
-	);
-
-	return {
-		mintedVolume,
-		minterTimestamps,
-		minterError,
-		minterData,
-	};
-}
-
 function shortenHash(hash) {
 	const show = 5;
 	return (
@@ -91,7 +63,7 @@ function shortenHash(hash) {
 }
 
 export default function MintChart({ view }) {
-	const { mintedVolume, minterTimestamps, minterData, minterError } =
+	const { mintedVolume, minterTimestamps, minterData } =
 		useMintVolume();
 	return view === "volume" ? (
 		<Bar

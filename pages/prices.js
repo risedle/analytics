@@ -7,7 +7,7 @@ export default function Price() {
 	return (
 		<Layout>
 			<div className="flex h-full">
-				<div className="w-3/4 pr-8 my-8" style={{height: 1024}}>
+				<div className="w-3/4 pr-8 my-8" style={{ height: 1024 }}>
 					<PriceChart timeframe={timeframe} />
 				</div>
 				<div className="w-1/4">
@@ -24,12 +24,6 @@ export default function Price() {
 								<option value="monthly">1 Month</option>
 								<option value="3months">3 Months</option>
 							</select>
-						</div>
-						<div>
-							<input type="checkbox" /> ETH
-						</div>
-						<div>
-							<input type="checkbox" /> ETHRISE
 						</div>
 					</form>
 				</div>

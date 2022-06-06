@@ -117,13 +117,6 @@ export default function PriceChart({ timeframe }) {
 							borderColor: ["cyan"],
 							borderWidth: 2,
 						},
-						// {
-						// 	label: "ETHRISE's Price",
-						// 	data: ETHRISEPrices,
-						// 	backgroundColor: ["teal"],
-						// 	borderColor: ["teal"],
-						// 	borderWidth: 2,
-						// },
 					],
 				}}
 			/>
