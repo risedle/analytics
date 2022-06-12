@@ -1,14 +1,17 @@
-import PriceChart from "../components/charts/price-chart";
-import Layout from "../components/layouts";
+import Layout from "../uikit/layouts";
 
-export default function Home() {
+export default function HomePage() {
 	return (
 		<Layout>
 			<p>gm!</p>
 
 			<div className="mt-8">
 				Please create dune dashboard similar to
-				<a href="https://dune.com/jdcook/ETH2x-FLI" target="_blank" rel="noreferrer">
+				<a
+					href="https://dune.com/jdcook/ETH2x-FLI"
+					target="_blank"
+					rel="noreferrer"
+				>
 					{" "}
 					https://dune.com/jdcook/ETH2x-FLI
 				</a>

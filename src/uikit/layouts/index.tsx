@@ -1,7 +1,11 @@
 import Logo from "../others/logo";
 import Link from "next/link";
 
-export default function Layout(props) {
+type LayoutProps = {
+	children?: React.ReactNode;
+};
+
+export default function Layout(props: LayoutProps) {
 	return (
 		<div className="flex justify-center h-full text-white">
 			<div className="w-3/4 h-full">
