@@ -1,5 +1,5 @@
-import moment from "moment";
 import { FunctionComponent } from "react";
+import { groupMintAmountByDate } from "src/utils/groupMintAmountByDate";
 import { MintEntities } from "../../types/entities";
 import { BarChart } from "../../uikit/charts/BarChart";
 
@@ -10,24 +10,14 @@ type MintVolumeChartProps = {
 const MintVolumeChart: FunctionComponent<MintVolumeChartProps> = ({
 	mintEntities,
 }) => {
-	const mintAmountGroupByDate: { [day: string]: number } = {};
-	mintEntities.forEach((item) => {
-		const day: string = moment
-			.unix(parseInt(item.timestamp))
-			.format("YYYY-MM-DD");
-		const addedAmount: number = parseFloat(item.amountRISE) / 10 ** 18;
-		if (!mintAmountGroupByDate[day]) mintAmountGroupByDate[day] = 0;
-		mintAmountGroupByDate[day] += addedAmount;
-	});
-	const mintedVolume = Object.values(mintAmountGroupByDate).reverse();
-	const minterTimestamps = Object.keys(mintAmountGroupByDate)
-		.map((item) => moment(item).format("MMMM D, YYYY"))
-		.reverse();
+
+	const { mintedVolumes, mintedTimestamps } =
+		groupMintAmountByDate(mintEntities);
 
 	return (
 		<BarChart
-			data={mintedVolume}
-			labels={minterTimestamps}
+			data={mintedVolumes}
+			labels={mintedTimestamps}
 			options={{ color: "crimson", title: "Mint Volume Chart" }}
 		/>
 	);

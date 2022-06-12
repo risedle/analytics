@@ -1,6 +1,7 @@
-import moment from "moment";
 import Link from "next/link";
 import { FunctionComponent } from "react";
+import { etherToDecimal } from "src/utils/etherToDecimal";
+import { timestampToDateFormat } from "src/utils/timestampToDateFormat";
 import { MintEntities } from "../../types/entities";
 import { shortenHash } from "../../utils/sortenHash";
 
@@ -30,13 +31,13 @@ const MinterTable: FunctionComponent<MinterTableProps> = ({ mintEntities }) => {
 						</Link>
 					</td>
 					<td className="border border-slate-700">
-						{moment
-							.unix(parseInt(item.timestamp))
-							.format("MMM D, YYYY hh:mm:s a")}
+						{timestampToDateFormat(
+							item.timestamp,
+							"MMM D, YYYY hh:mm:s a"
+						)}
 					</td>
 					<td className="border border-slate-700">
-						{(parseFloat(item.amountRISE) / 10 ** 18).toFixed(4)}{" "}
-						ETHRISE
+						{etherToDecimal(item.amountRISE, 18).toFixed(4)} ETHRISE
 					</td>
 				</tr>
 			))}
