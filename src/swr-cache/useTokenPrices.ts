@@ -48,7 +48,7 @@ function useTokenPrice(timeframe: TimeframeType) {
 		}
 		ETHPrices = ETHDataFilteredTimestamp.map((item) => item[1]);
 		ETHTimestamps = ETHDataFilteredTimestamp.map((item) =>
-			timestampToDateFormat(item[0], "MMM D, YYYY hh:mm:s a")
+			timestampToDateFormat(item[0] / 1000, "MMM D, YYYY hh:mm:s a")
 		);
 	}
 
