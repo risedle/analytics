@@ -1,4 +1,5 @@
 import Layout from "src/uikit/layouts";
+import { useMint } from "src/swr-cache/useMint";
 
 export default function HomePage() {
 	return (
@@ -22,6 +23,7 @@ export default function HomePage() {
 			<div>✦ address mint - accumulative and daily</div>
 			<div>✦ revenue - accumulative and daily</div>
 			<div>✦ to be added later</div>
+			{/* <pre>{!loading ? JSON.stringify(data) : "loading"}</pre> */}
 		</Layout>
 	);
 }

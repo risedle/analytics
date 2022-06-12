@@ -1,4 +1,4 @@
-import PriceChart from "src/modules/charts/price-chart";
+import PriceChart from "src/modules/deprecated/price-chart";
 import Layout from "src/uikit/layouts";
 import { useState } from "react";
 import { NextPage } from "next";
