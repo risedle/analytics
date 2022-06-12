@@ -1,5 +1,5 @@
 import moment from "moment";
-import { TimeframeType, RiseSnapshotType, CoinGeckoMarketChartType } from "src/types/charts";
+import { TimeframeType, RiseSnapshotType, CoinGeckoMarketChartType } from "../types/charts";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())

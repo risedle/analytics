@@ -1,4 +1,4 @@
-import Layout from "src/uikit/layouts";
+import Layout from "../uikit/layouts";
 
 export default function VolumePage() {
 	return (
@@ -6,4 +6,4 @@ export default function VolumePage() {
 			<p>coming soon 🚀</p>
 		</Layout>
 	);
-};
+}

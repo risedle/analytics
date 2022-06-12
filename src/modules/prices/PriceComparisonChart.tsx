@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { useTokenPrice } from "src/swr-cache/useTokenPrices";
-import { TimeframeType } from "src/types/charts";
-import { LineChart } from "src/uikit/charts/LineChart";
+import { useTokenPrice } from "../../swr-cache/useTokenPrices";
+import { TimeframeType } from "../../types/charts";
+import { LineChart } from "../../uikit/charts/LineChart";
 
 type PriceComparisonChartProps = {
 	timeframe: TimeframeType;

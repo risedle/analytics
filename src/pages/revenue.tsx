@@ -1,4 +1,4 @@
-import Layout from "src/uikit/layouts";
+import Layout from "../uikit/layouts";
 
 export default function RevenuePage() {
 	return (

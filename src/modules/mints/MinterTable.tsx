@@ -1,8 +1,8 @@
 import moment from "moment";
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { MintEntities } from "src/types/entities";
-import { shortenHash } from "src/utils/sortenHash";
+import { MintEntities } from "../../types/entities";
+import { shortenHash } from "../../utils/sortenHash";
 
 type MinterTableProps = {
 	mintEntities: MintEntities[];

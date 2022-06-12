@@ -1,7 +1,7 @@
-import Layout from "src/uikit/layouts";
+import Layout from "../uikit/layouts";
 import { useState } from "react";
-import { TimeframeType } from "src/types/charts";
-import { PriceComparisonChart } from "src/modules/prices/PriceComparisonChart";
+import { TimeframeType } from "../types/charts";
+import { PriceComparisonChart } from "../modules/prices/PriceComparisonChart";
 
 export default function PricePage() {
 	const [timeframe, setTimeframe] = useState<TimeframeType>("daily");

@@ -1,7 +1,7 @@
 import moment from "moment";
 import { FunctionComponent } from "react";
-import { MintEntities } from "src/types/entities";
-import { BarChart } from "src/uikit/charts/BarChart";
+import { MintEntities } from "../../types/entities";
+import { BarChart } from "../../uikit/charts/BarChart";
 
 type MintVolumeChartProps = {
 	mintEntities: MintEntities[];

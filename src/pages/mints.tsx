@@ -1,7 +1,7 @@
-import { MinterTable } from "src/modules/mints/MinterTable";
-import { MintVolumeChart } from "src/modules/mints/MintVolumeChart";
-import { useMint } from "src/swr-cache/useMint";
-import Layout from "src/uikit/layouts";
+import { MinterTable } from "../modules/mints/MinterTable";
+import { MintVolumeChart } from "../modules/mints/MintVolumeChart";
+import { useMint } from "../swr-cache/useMint";
+import Layout from "../uikit/layouts";
 
 export default function MintPage() {
 	const { loading, data } = useMint();
