@@ -1,3 +1,9 @@
-import { UnderConstructionPage } from "src/modules/under-construction/UnderConstructionPage";
+import Layout from "src/uikit/layouts";
 
-export default UnderConstructionPage;
+export default function RevenuePage() {
+	return (
+		<Layout>
+			<p>coming soon 🚀</p>
+		</Layout>
+	);
+};

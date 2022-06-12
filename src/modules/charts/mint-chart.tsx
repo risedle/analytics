@@ -9,7 +9,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import moment from "moment";
-import { useMintVolume } from "../../hooks/useMintVolume";
+import { useMintVolume } from "../../swr-cache/useMintVolume";
 
 ChartJS.register(
 	CategoryScale,
