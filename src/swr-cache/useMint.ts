@@ -1,5 +1,3 @@
-// import moment from "moment";
-// import { useState, useEffect } from "react";
 import { request } from "graphql-request";
 import useSWR from "swr";
 

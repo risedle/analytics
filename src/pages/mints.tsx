@@ -1,12 +1,10 @@
-import Layout from "src/uikit/layouts";
-import { useState } from "react";
-import { useMint } from "src/swr-cache/useMint";
 import { MinterTable } from "src/modules/mints/MinterTable";
 import { MintVolumeChart } from "src/modules/mints/MintVolumeChart";
+import { useMint } from "src/swr-cache/useMint";
+import Layout from "src/uikit/layouts";
 
 export default function MintPage() {
 	const { loading, data } = useMint();
-	const [view, setView] = useState("volume");
 	return (
 		<Layout>
 			<div className="flex h-full flex-col">

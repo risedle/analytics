@@ -1,26 +1,26 @@
-import { Bar } from "react-chartjs-2";
 import {
 	Chart as ChartJS,
 	CategoryScale,
 	LinearScale,
-	BarElement,
+	PointElement,
+	LineElement,
 	Title,
 	Tooltip,
 	Legend,
 	ChartOptions,
-	ChartType,
 } from "chart.js";
+import { Line } from "react-chartjs-2";
 import { FunctionComponent } from "react";
-
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
-	BarElement,
+	PointElement,
+	LineElement,
 	Title,
 	Tooltip,
 	Legend
 );
-const chartOption: ChartOptions<"bar"> = {
+const chartOption: ChartOptions<"line"> = {
 	color: "white",
 	borderColor: "white",
 	elements: {
@@ -37,6 +37,7 @@ const chartOption: ChartOptions<"bar"> = {
 			display: true,
 			position: "bottom",
 			labels: {
+				// This more specific font property overrides the global property
 				font: {
 					size: 14,
 				},
@@ -49,8 +50,7 @@ const chartOption: ChartOptions<"bar"> = {
 		},
 	},
 };
-
-type BarChartProps = {
+type LineChartProps = {
 	labels: string[];
 	data: number[];
 	options: {
@@ -59,13 +59,13 @@ type BarChartProps = {
 	};
 };
 
-const BarChart: FunctionComponent<BarChartProps> = ({
+const LineChart: FunctionComponent<LineChartProps> = ({
 	labels,
 	data,
 	options,
 }) => {
 	return (
-		<Bar
+		<Line
 			options={chartOption}
 			data={{
 				labels: labels,
@@ -83,4 +83,4 @@ const BarChart: FunctionComponent<BarChartProps> = ({
 	);
 };
 
-export { BarChart };
+export { LineChart };

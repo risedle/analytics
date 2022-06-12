@@ -1,5 +1,4 @@
 import Layout from "src/uikit/layouts";
-import { useMint } from "src/swr-cache/useMint";
 
 export default function HomePage() {
 	return (

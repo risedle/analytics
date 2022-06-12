@@ -10,13 +10,6 @@ type MintVolumeChartProps = {
 const MintVolumeChart: FunctionComponent<MintVolumeChartProps> = ({
 	mintEntities,
 }) => {
-	const labels = mintEntities.map((item) =>
-		moment.unix(parseInt(item.timestamp)).format("MMM D, YYYY hh:mm:s a")
-	);
-	const data = mintEntities.map(
-		(item) => parseFloat(item.amountRISE) / 10 ** 18
-	);
-
 	const mintAmountGroupByDate: { [day: string]: number } = {};
 	mintEntities.forEach((item) => {
 		const day: string = moment
